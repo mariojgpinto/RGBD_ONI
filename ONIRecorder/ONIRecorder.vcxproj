@@ -32,19 +32,28 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Props\NESTK_PATHS_DEBUG.props" />
-    <Import Project="..\..\Props\NESTK_LIBS_DEBUG.props" />
+    <Import Project="C:\Dev\PropertySheets\NESTK_DEBUG.props" />
+    <Import Project="..\..\..\PropertySheets\OPENCV_245_DEBUG.props" />
+    <Import Project="..\..\..\PropertySheets\QT_482_DEBUG.props" />
+    <Import Project="..\..\..\PropertySheets\OPENNI.props" />
+    <Import Project="..\..\..\PropertySheets\NITE.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Props\NESTK_PATHS_DEBUG.props" />
+    <Import Project="..\..\..\PropertySheets\NESTK_RELEASE.props" />
+    <Import Project="..\..\..\PropertySheets\OPENCV_245_RELEASE.props" />
+    <Import Project="..\..\..\PropertySheets\QT_482_RELEASE.props" />
+    <Import Project="..\..\..\PropertySheets\OPENNI.props" />
+    <Import Project="..\..\..\PropertySheets\NITE.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(ProjectName)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -66,8 +75,8 @@
       <AdditionalDependencies>comdlg32.lib</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>copy ..\Debug\*.lib ..\..\External\MyLibs\lib\debug\
-copy *.h ..\..\External\MyLibs\include\</Command>
+      <Command>copy *.h C:\Dev\External\MyLibs\include
+copy Debug\*.lib C:\Dev\External\MyLibs\lib\debug\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +95,10 @@ copy *.h ..\..\External\MyLibs\include\</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <PostBuildEvent>
+      <Command>copy *.h C:\Dev\External\MyLibs\include
+copy Release\*.lib C:\Dev\External\MyLibs\lib\release\</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="oni_recorder.cpp" />

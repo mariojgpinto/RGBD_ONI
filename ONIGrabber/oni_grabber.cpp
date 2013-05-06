@@ -95,7 +95,7 @@ ONIGrabber :: ONIGrabber(const std::string& file_path) :
     m_has_rgb(true)
 {
 	setCameraSerial(file_path.substr(file_path.find_last_of("\\")+1));
-    //setDefaultBayerMode();
+    //setDefaultBayerMode(); 
 }
 
 
